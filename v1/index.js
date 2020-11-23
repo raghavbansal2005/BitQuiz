@@ -16,12 +16,15 @@ mongoose.connect('mongodb+srv://owner-raghav:password123456@cluster0.gc8q9.mongo
 mongoose.set('useCreateIndex', true);
 
 
+app.set("view engine", "ejs");
 
 
+
+//  await Question.find({}).then(q => res.send(q));
 
 
 app.get("/", async (req, res) => {
-    await Question.find({}).then(q => res.send(q));
+    res.render("home");
 });
 
 
