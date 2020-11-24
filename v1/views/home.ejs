@@ -6,88 +6,20 @@
         <meta name="description" content="The HTML5 Herald">
         <meta name="author" content="SitePoint">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/home.css">
     </head>
 
     <body>
         <style>
-            body, html{
-                height: 100%;
-                background: rgb(240,242,245);
-            }
-            .same-line-maker{
-                display: flex;
-                justify-content: center;
-                align-items: center; 
-                width: 70%;
-                margin-left: 15%;
-                margin-right: 15%;
-                padding-top: 250px;
-                /* border: 2px solid black;     */
-            }
-            .form-control-nine{
-                flex: 11;
-                width: 28%;
-                height: 20%;
-                padding: 2%;
-                border: 1px rgb(108, 103, 112) solid;
-                border-radius: 25px;
-                background: white;
-            }
-            .home-h1{
-                text-align: center;
-                font-size: 3rem;
-            }
-            .submit-btn{
-                padding-top: 10px;
-                text-align: center;
-            }
-            .home-register{
-                height: 50px;
-                font-size: 1.1rem;
-            }
-            .submit-text{
-                padding-top: 11px;
-                padding-bottom: 14px;
-                padding-left: 50px;
-                padding-right: 52px;
-                font-size: 1.3rem;
-                text-align: center;
-                font-weight: 600;
-                background-color:rgb(88,183,32);
-            }
-            .login-input-div{
-                padding-bottom: 6%;
-            }
-            .center-size-already{
-                text-align: center;
-                font-size: 1.1rem;
-            }
-            .login-redirect-btn{
-                padding-top: 3px;
-                padding-bottom: 6px;
-                padding-left: 20px;
-                padding-right: 22px;
-                font-size: 1rem;
-                text-align: center;
-                font-weight: 600;
-                background-color:rgb(47,121,244);               
-            }
-            .info-card-large{
-                flex: 25;
-                width: 20%;
-                border: 1px black solid;
-                align-self: flex-middle;
-            }
-            .seperator{
-                flex: 10;
-            }
+
         </style>
 
         <!---------------------------------------------------->
         <div class="same-line-maker">
+
             <div class="info-card-large">
-                <h1>BQuiz</h1>
-                <h3>Welcome to BQuiz the best site to ace your next FBLA quiz</h3>
+                <h1 class="logo-home-page">BQuiz</h1>
+                <h3 class="description-home-page">Welcome to BQuiz the best site to ace your next FBLA quiz</h3>
             </div>
 
             <div class="seperator"></div>
@@ -97,18 +29,21 @@
             <div class="form-control-nine">
                 <form action="/register" method="POST" class="validated-form" novalidate>
                     <div class="mb-2 login-input-div">
+                        <label class="form-label" for="username">What should we call you?</label>
                         <input class="form-control home-register" type="text" id="username" name="username" placeholder="Username" size="500" required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
                     </div>
                     <div class="mb-2 login-input-div">
+                        <label class="form-label" for="username">What's your email?</label>
                         <input class="form-control home-register" type="email" id="email" name="email" placeholder="Email" required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
                     </div>
                     <div class="mb-2 login-input-div">
+                        <label class="form-label" for="username">Create a password</label>
                         <input class="form-control home-register" type="password" id="password" name="password" placeholder="Password" required>
                         <div class="valid-feedback">
                             Looks good!

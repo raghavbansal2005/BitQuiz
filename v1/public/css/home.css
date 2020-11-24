@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+body, html{
+    height: 100%;
+    background: rgb(240, 242, 245);
+    font-family: Rubik;
+}
+.same-line-maker{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    width: 65%;
+    margin-left: 15%;
+    margin-right: 15%;
+    padding-top: 250px;
+}
+.form-control-nine{
+    flex: 14;
+    width: 28%;
+    height: 20%;
+    padding: 2%;
+    border: 1px rgb(108, 103, 112) solid;
+    border-radius: 25px;
+    background: white;
+}
+.submit-btn{
+    text-align: center;
+}
+.home-register{
+    height: 50px;
+    font-size: 1.1rem;
+    margin-left: 11px;
+}
+.submit-text{
+    padding-top: 11px;
+    padding-bottom: 14px;
+    padding-left: 50px;
+    padding-right: 52px;
+    font-size: 1.3rem;
+    text-align: center;
+    font-weight: 600;
+    background-color:rgb(88,183,32);
+}
+.login-input-div{
+    padding-bottom: 6%;
+}
+.center-size-already{
+    text-align: center;
+    font-size: 1.1rem;
+}
+.login-redirect-btn{
+    padding-top: 3px;
+    padding-bottom: 6px;
+    padding-left: 20px;
+    padding-right: 22px;
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 600;
+    background-color:rgb(47,121,244);               
+}
+.info-card-large{
+    flex: 17;
+    width: 20%;
+    align-self: flex-middle;
+}
+.seperator{
+    flex: 7;
+}
+.logo-home-page{
+    font-size: 3.5rem;
+}
+.description-home-page{
+    font-size: 1.6rem;
+    padding-top: 15px;
+}
+.form-label{
+    font-weight: 800;
+}
+
+/* @media (max-width: 800px) {
+    body, html{
+        height: 100%;
+        background: rgb(240, 242, 245);
+        font-family: Rubik;
+    }
+
+  } */

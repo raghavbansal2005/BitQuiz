@@ -17,6 +17,7 @@
     "flash": "^1.1.0",
     "mongoose": "^5.10.11",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^6.0.1"
   }
 }
