@@ -49,15 +49,12 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 
 passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) =>{
   res.locals.success = req.flash("success");
   next();
-})
-
-
-
-//  await Question.find({}).then(q => res.send(q));
+});
 
 
 app.get("/register", async (req, res) => {
