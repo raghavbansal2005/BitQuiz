@@ -17,7 +17,7 @@ mongoose.connect('mongodb+srv://owner-raghav:password123456@cluster0.gc8q9.mongo
 }).then(() => { 
   console.log('Connected to DB!');
 }).catch(err => {
-  console.log('ERROR:', err.message)
+  console.log('ERROR:', err.message);
 });
 mongoose.set('useCreateIndex', true);
 
