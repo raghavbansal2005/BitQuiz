@@ -41,10 +41,14 @@ const sessionConfig = {
   } 
 };
 app.use(session(sessionConfig));
-app.use(flash())
+app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
 
 app.use((req, res, next) =>{
   res.locals.success = req.flash("success");
@@ -60,13 +64,6 @@ app.get("/register", async (req, res) => {
     res.render("home");
 });
 
-app.get("/quiz", async (req, res) => {
-  res.render("quiz");
-});
-
-app.get("/login", async (req, res) => {
-  res.render("./users/login");
-})
 
 app.post("/register", async(req, res)=> {
   const {username, email, password} = req.body;
@@ -79,12 +76,19 @@ app.post("/register", async(req, res)=> {
 })
 
 
+app.get("/login", async (req, res) => {
+  res.render("./users/login");
+})
+
+app.post("/login", passport.authenticate('local', {failureFlash: true, failureRedirect: '/login'}), async (req, res) => {
+  req.flash('success', "Welcome Back to Bquiz");
+  res.redirect('/quiz');
+})
 
 
-
-
-
-
+app.get("/quiz", async (req, res) => {
+  res.render("quiz");
+});
 
 
 
