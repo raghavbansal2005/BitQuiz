@@ -15,7 +15,7 @@ mongoose.connect('mongodb+srv://owner-raghav:password123456@cluster0.gc8q9.mongo
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => { 
-  console.log('Connected to DB!')
+  console.log('Connected to DB!');
 }).catch(err => {
   console.log('ERROR:', err.message)
 });
