@@ -79,7 +79,7 @@ app.post("/register", async(req, res)=> {
   console.log(registeredUser);
   req.flash("Welcome to Bquiz!");
   res.redirect("/login");
-})
+});
 
 
 app.get("/login", async (req, res) => {
