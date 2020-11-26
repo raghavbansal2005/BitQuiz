@@ -77,6 +77,7 @@ app.post("/register", async(req, res)=> {
   const registeredUser = await User.register(user, password);
   req.flash('success', 'Successfully signed up for BQuiz!');
   console.log(registeredUser);
+  console.log("A new user has registered!")
   req.flash("Welcome to Bquiz!");
   res.redirect("/login");
 });
