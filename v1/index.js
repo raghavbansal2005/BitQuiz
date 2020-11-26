@@ -53,7 +53,16 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) =>{
   res.locals.success = req.flash("success");
+  res.locals.error = req.flash('error');
   next();
+});
+
+app.get("/", async (req, res) => {
+  if(!req.isAuthenticated()){
+    res.redirect("/register");
+  } else {
+    res.redirect("/quiz");
+  }
 });
 
 
@@ -74,17 +83,24 @@ app.post("/register", async(req, res)=> {
 
 
 app.get("/login", async (req, res) => {
-  res.render("./users/login");
+  if(req.isAuthenticated()){
+    res.redirect("/quiz");
+  } else {
+    res.render("./users/login");
+  };
 })
 
 app.post("/login", passport.authenticate('local', {failureFlash: true, failureRedirect: '/login'}), async (req, res) => {
-  req.flash('success', "Welcome Back to Bquiz");
   res.redirect('/quiz');
 })
 
 
 app.get("/quiz", async (req, res) => {
-  res.render("quiz");
+  if(!req.isAuthenticated()){
+    res.redirect("/register")
+  } else{
+    res.render("quiz");
+  }
 });
 
 

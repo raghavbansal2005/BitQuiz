@@ -1,13 +1,29 @@
 <% if(success && success.length) { %> 
     <div class="alert alert-success flash-alert-login" role="alert">
         <%= success %> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <style>
+            .same-line-maker{
+                padding-top: 0px;
+            }
+        </style>
     </div>
-<% }else { %> 
-    <style>
-        .same-line-maker{
-            padding-top: 150px;
-        }
-    </style>
+<% }else if(error && error.length) { %> 
+    <div class="alert alert-danger flash-alert-login" role="alert">
+        <%= error;%> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <style>
+            .same-line-maker{
+                padding-top: 0px;
+            }
+        </style>
+    </div>
 <% } %> 
+
+
 
 
