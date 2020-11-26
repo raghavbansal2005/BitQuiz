@@ -92,6 +92,7 @@ app.get("/login", async (req, res) => {
 
 app.post("/login", passport.authenticate('local', {failureFlash: true, failureRedirect: '/login'}), async (req, res) => {
   res.redirect('/quiz');
+  console.log("Successfully Logged In!")
 })
 
 
