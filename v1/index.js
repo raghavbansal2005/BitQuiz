@@ -97,7 +97,7 @@ app.post("/login", passport.authenticate('local', {failureFlash: true, failureRe
 
 app.get("/quiz", async (req, res) => {
   if(!req.isAuthenticated()){
-    res.redirect("/register")
+    res.redirect("/register");
   } else{
     res.render("quiz");
   }
