@@ -72,14 +72,23 @@ app.get("/register", async (req, res) => {
 
 
 app.post("/register", async(req, res)=> {
-  const {username, email, password} = req.body;
-  const user = new User({email, username});
-  const registeredUser = await User.register(user, password);
-  req.flash('success', 'Successfully signed up for BQuiz!');
-  console.log(registeredUser);
-  console.log("A new user has registered");
-  req.flash("Welcome to Bquiz!");
-  res.redirect("/login");
+  try{
+    const {username, email, password} = req.body;
+    const user = new User({email, username});
+    const registeredUser = await User.register(user, password);
+    req.flash('success', 'Successfully signed up for BQuiz!');
+    console.log(registeredUser);
+    console.log("A new user has registered");
+    req.flash("Welcome to Bquiz!");
+    res.redirect("/login");
+  }catch (e){
+    if (e.toString().includes('username')) {
+      req.flash('error', "That username is already taken.");
+    } else if(e.toString().includes('email')) {
+      req.flash('error', "An account with that email already exists.");
+    };
+    res.redirect('/register')
+  }
 });
 
 
