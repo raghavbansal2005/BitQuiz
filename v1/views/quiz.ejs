@@ -6,10 +6,89 @@
         <meta name="description" content="The HTML5 Herald">
         <meta name="author" content="SitePoint">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/home.css">
+        <link rel="stylesheet" href="css/quiz.css">
     </head>
 
+    <%- include("./partials/flash")  %>
+
+
+
+
+
+
     <body>
-        <%- include("./partials/flash")  %>
-        <h1>dfkgbdf;lhgdsfkhgsdfkjhdflkjghdfkjghdflkjghdfkjghdfkjghdflkjhg</h1>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-darkk">
+            <div class="container">
+            <a class="navbar-brand" href="#">BQuiz</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav justify-content-end ml-auto">
+                <li class="nav-item dropdown dropdown-text-changer">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown link
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Account</a>
+                    <a class="dropdown-item" href="#">Test Settings</a>
+                    <a class="dropdown-item" href="#">Test History</a>
+                    <a class="dropdown-item" href="#">Analytics</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            </div>
+          </nav>
+
+
+          <div class="top-row-btns">
+            <button type="button" class="btn btn-secondary top-row-text">All Topics</button>
+            <button type="button" class="btn btn-secondary top-row top-row-text">Test Settings</button>
+          </div>
+
+          <div class="container-quizzes">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        
+
+          <%- include("./partials/btstjs")  %>
     </body>

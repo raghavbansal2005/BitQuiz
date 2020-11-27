@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+body, html{
+    height: 100%;
+    background: white;
+    font-family: Rubik;
+}
+.bg-darkk{
+    background: rgb(240, 242, 245);
+}
+.dropdown-text-changer{
+    font-size: 1.3rem;
+}
+.navbar-brand{
+    font-size: 2.1rem;
+}
+.dropdown-item{
+    font-size: 1.2rem;
+    padding-bottom: 20px;
+    padding-top: 12px;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+.top-row-btns{
+    padding-top: 2%;
+    text-align: center;
+}
+.top-row{
+    margin-left: 700px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.col-sm-12{
+    padding-top: 48px;
+}
+.top-row-text{
+    padding-left: 20px;
+    padding-right: 22px;
+}
+.container-quizzes{
+    margin-left: 20%;
+    margin-right: 20%;
+}
