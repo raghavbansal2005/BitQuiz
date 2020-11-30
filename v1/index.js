@@ -65,7 +65,7 @@ app.get("/", async (req, res) => {
   }
 });
 
-
+ 
 app.get("/register", async (req, res) => {
     res.render("home");
 });
@@ -104,6 +104,15 @@ app.post("/login", passport.authenticate('local', {failureFlash: true, failureRe
   console.log("A user has logged in");
 })
 
+app.post("/logout", async (req, res) => {
+  if(!req.isAuthenticated()){
+    res.redirect("/register");
+  } else if(req.isAuthenticated()) {
+    req.logout();
+    res.redirect("/login");
+  }
+}); 
+
 
 app.get("/quiz", async (req, res) => {
   if(!req.isAuthenticated()){
@@ -112,6 +121,15 @@ app.get("/quiz", async (req, res) => {
     res.render("quiz");
   }
 });
+
+app.get("/quiz/:topic", async (req, res) => {
+  if(!req.isAuthenticated()){
+    res.redirect("/register");
+  } else if(req.isAuthenticated()) {
+    Question.find({topic: req.params.topic}).then(questions => res.send(questions));
+    console.log(req.params.topic);
+  }
+})
 
 
 
