@@ -153,7 +153,7 @@ app.get("/quiz/:topic/quiz", async (req, res) => {
   if(!req.isAuthenticated()){
     res.redirect("/register");
   } else if(req.isAuthenticated()) {
-    Question.find({topic: req.params.topic}).then(q => res.render("test", {questions: q, numbers: req.cookies.numbers}));
+    Question.find({topicurl: req.params.topic}).then(q => res.render("test", {questions: q, numbers: req.cookies.numbers}));
   }
 })
 
