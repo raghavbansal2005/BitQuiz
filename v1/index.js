@@ -144,7 +144,8 @@ app.get("/quiz/:topic/info", async( req, res) => {
       };
     } 
     res.cookie('numbers', questions_numbers);
-    res.render("testinfo", {topic: req.params.topic});
+    Question.find({topicurl: req.params.topic}).then(q => res.render("testinfo", {questions: q, numbers: req.cookies.numbers}));
+    // res.render("testinfo", {topic: req.params.topic});
   }
 })
 
