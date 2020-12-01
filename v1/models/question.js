@@ -7,7 +7,8 @@ const QuestionSchema = new mongoose.Schema({
   solution: String,
   topic: String,
   competency: String,
-  toq: String
+  toq: String,
+  topicurl: String
 });
 
 module.exports = mongoose.model('question', QuestionSchema);
