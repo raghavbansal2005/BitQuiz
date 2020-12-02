@@ -8,7 +8,7 @@ const LocalStrategy = require("passport-local");
 const session = require('express-session');
 const User = require("./models/user");
 const bodyParser = require("body-parser");
-var cookieParser = require("cookie-parser");
+const cookieParser = require("cookie-parser");
 
 
 
@@ -132,20 +132,29 @@ app.get("/quiz/:topic/info", async( req, res) => {
   if(!req.isAuthenticated()){
     res.redirect("/register");
   }else {
-    var questions_numbers = [];
-    var num_of_questions = 6;
-    var i = 0;
+    let questions_numbers = [];
+    let num_of_questions = 6;
+    let i = 0;
     while (i < num_of_questions){
-      var number_for_now = Math.random() * 10;
-      var question_number = Math.floor(number_for_now)
+      let number_for_now = Math.random() * 10;
+      let question_number = Math.floor(number_for_now)
       if(!questions_numbers.includes(question_number)){
         questions_numbers.push(question_number);
         i++;
       };
-    } 
+    }
+    let optionNumbers = [];
+    let b = 0;
+    while (b < 4){
+      let numberToAdd = Math.floor(Math.random() * 5);
+      if (!optionNumbers.includes(numberToAdd)) {
+        optionNumbers.push(numberToAdd);
+        b++;
+      }
+    }
     res.cookie('numbers', questions_numbers);
+    res.cookie('optionNumbers', optionNumbers);
     Question.find({topicurl: req.params.topic}).then(q => res.render("testinfo", {questions: q, numbers: req.cookies.numbers}));
-    // res.render("testinfo", {topic: req.params.topic});
   }
 })
 
@@ -154,7 +163,7 @@ app.get("/quiz/:topic/quiz", async (req, res) => {
   if(!req.isAuthenticated()){
     res.redirect("/register");
   } else if(req.isAuthenticated()) {
-    Question.find({topicurl: req.params.topic}).then(q => res.render("test", {questions: q, numbers: req.cookies.numbers}));
+    Question.find({topicurl: req.params.topic}).then(q => res.render("test", {questions: q, numbers: req.cookies.numbers, optionNumbers: req.cookies.optionNumbers}));
   }
 })
 

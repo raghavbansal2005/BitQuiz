@@ -1,5 +1,15 @@
-
-
-<% numbers.forEach(function(e) { %>
-    <h1><%= questions[e].question %></h1>
-<% }) %>
+<html>
+    <head>
+        <%- include("./partials/header")  %>
+    </head>
+    <body>
+        <% numbers.forEach(function(e) { %>
+            <h1><%= questions[e].question %></h1>
+            <h2><%= questions[e].options[optionNumbers[0]]%> </h2>
+            <h2><%= questions[e].options[optionNumbers[1]]%> </h2>
+            <h2><%= questions[e].options[optionNumbers[2]]%> </h2>
+            <h2><%= questions[e].options[optionNumbers[3]]%> </h2>
+        <% }) %>
+        <%- include("./partials/btstjs")  %>
+    </body>
+</html>
