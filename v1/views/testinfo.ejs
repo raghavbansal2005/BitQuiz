@@ -2,11 +2,140 @@
 <html lang="en">
     <head>
         <%- include("./partials/header")  %>
-        <link rel="stylesheet" href="css/testinfo.css">
     </head>
 
     <body>
-        <a class="testClass" href="/quiz/<%=questions[0].topicurl%>/quiz"><%=questions[0].topic%></a>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+            body, html{
+                height: 100%;
+                background: rgb(240, 242, 245);
+                font-family: Rubik;
+            }
+            .same-line-maker{
+                display: flex;
+                justify-content: center;
+                align-items: center; 
+                width: 30%;
+                margin-left: 35%;
+                margin-right: 35%;
+                padding-top: 15%;
+            }
+            .form-control-nine{
+                flex: 14;
+                width: 38%;
+                padding-top: 4%;
+                padding-bottom: 2%;
+                padding-right: 8%;
+                padding-left: 5%;
+                border: 1px rgb(108, 103, 112) solid;
+                border-radius: 25px;
+                background: white;
+            }
+            .submit-btn{
+                text-align: center;
+                padding-top: 10px;
+            }
+            .home-register{
+                height: 50px;
+                margin-top: 10px;
+                font-size: 1.1rem;
+                margin-left: 11px;
+            }
+            .submit-text{
+                padding-top: 11px;
+                padding-bottom: 14px;
+                padding-left: 50px;
+                padding-right: 52px;
+                font-size: 1.3rem;
+                text-align: center;
+                font-weight: 600;
+                background-color:rgb(88,183,32);
+            }
+            .login-input-div{
+                padding-bottom: 6%;
+            }
+            .center-size-already{
+                text-align: center;
+                font-size: 1.1rem;
+            }
+            .login-redirect-btn{
+                padding-top: 3px;
+                padding-bottom: 6px;
+                padding-left: 20px;
+                padding-right: 22px;
+                font-size: 1rem;
+                text-align: center;
+                font-weight: 600;
+                background-color:rgb(47,121,244);               
+            }
+            .info-card-large{
+                flex: 17;
+                width: 20%;
+                align-self: flex-middle;
+            }
+            .seperator{
+                flex: 7;
+            }
+            .logo-home-page{
+                font-size: 3.5rem;
+            }
+            .description-home-page{
+                font-size: 1.6rem;
+                padding-top: 15px;
+            }
+            .form-label{
+                font-weight: 800;
+            }
+            .redirect-btn{
+                text-align: center;
+                padding-top: 4%;
+                padding-bottom: 12%;
+            }
+            .logo-line{
+                width: 40%;
+            }
+            .logo-login-h1{
+                padding-top: 1.5%;
+                text-align: center;
+            }
+            .flash-alert-login{
+                justify-content: center;
+                width: 20%;
+                margin-left: 40%;
+                margin-top: 140px;
+                text-align: center;
+            }
+            .info-card-div{
+                margin-left: 10%;
+                margin-right: 10%;
+                padding-top: 10%;
+                padding-bottom: 4%;
+                text-align: center;
+            }
+            .info-card-text{
+                font-size: 25px;
+            }
+        </style>
+
+
+
+<div class="same-line-maker">
+
+    <div class="form-control-nine">
+        <div class="info-card-div">
+            <h1 class="info-card-text">You are about to take a <span style="font-weight: 600;"><%=numbers.length%></span> questions test test over <span style="font-weight: 600;"><%= questions[0].topic%></span></h1>
+        </div>
+        <hr>
+        <div class="redirect-btn">
+            <a class="testClass" href="/quiz/<%=questions[0].topicurl%>/quiz"><button class="btn btn-primary login-redirect-btn">Start Test</button></a>
+        </div>
+    </div>
+
+</div>
+
+
+        
     </body>
 
 
@@ -14,8 +143,4 @@
 </html>
         
         
-2
-
-
-
 

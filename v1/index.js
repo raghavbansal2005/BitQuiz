@@ -136,7 +136,7 @@ app.get("/quiz/:topic/info", async( req, res) => {
     let num_of_questions = 6;
     let i = 0;
     while (i < num_of_questions){
-      let number_for_now = Math.random() * 10;
+      let number_for_now = Math.random() * 9;
       let question_number = Math.floor(number_for_now)
       if(!questions_numbers.includes(question_number)){
         questions_numbers.push(question_number);
@@ -145,8 +145,8 @@ app.get("/quiz/:topic/info", async( req, res) => {
     }
     let optionNumbers = [];
     let b = 0;
-    while (b < 4){
-      let numberToAdd = Math.floor(Math.random() * 5);
+    while (b < 3){
+      let numberToAdd = Math.floor(Math.random() * 4);
       if (!optionNumbers.includes(numberToAdd)) {
         optionNumbers.push(numberToAdd);
         b++;
@@ -163,7 +163,8 @@ app.get("/quiz/:topic/quiz", async (req, res) => {
   if(!req.isAuthenticated()){
     res.redirect("/register");
   } else if(req.isAuthenticated()) {
-    Question.find({topicurl: req.params.topic}).then(q => res.render("test", {questions: q, numbers: req.cookies.numbers, optionNumbers: req.cookies.optionNumbers}));
+
+    Question.find({topicurl: req.params.topic}).then(q => res.render("test", {questions: q, numbers: req.cookies.numbers, optionNumbers: req.cookies.optionNumbers, numberOfQuestions: req.cookies.numbers.length}));
   }
 })
 

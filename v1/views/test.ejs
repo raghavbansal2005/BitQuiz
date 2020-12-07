@@ -3,13 +3,159 @@
         <%- include("./partials/header")  %>
     </head>
     <body>
+        <style>
+            body, html{
+            height: 100%;
+            background: rgb(240, 242, 245);
+            font-family : Rubik; 
+            }
+            .bar-progress-test{
+                width: 40%;
+                margin-top: 130px;
+                margin-left: 30%;
+            }
+            /* .next-btn{
+                margin-top: 33%;
+                margin-left: 75%;
+            } */
+            #number-of-questions{
+                font-size: 0px;
+            }
+            .question-div{
+                
+                background: white;
+                width: 50%;
+                margin-left: 25%;
+                margin-top: 4.5%;
+                padding-left: 4%;
+                padding-right: 4%;
+                padding-top: 1%;
+                padding-bottom: .5%;
+                border-radius: 20px;
+            }
+            #options{
+                margin-left: 28.5%;
+                width: 70%;
+                margin-top: 1.5%;
+            }
+            #optionA{
+                width: 30%;
+                height: 9%;
+                border-radius: 20px;
+            }
+            #optionB{
+                margin-left: 2%;
+                width: 30%;
+                height: 9%;
+                border-radius: 20px;
+            }
+            #optionC{
+                width: 30%;
+                height: 9%;
+                border-radius: 20px;
+            }
+            #optionD{
+                margin-left: 2%;
+                width: 30%;
+                height: 9%;
+                border-radius: 20px;
+            }
+            #options-bottom-row{
+                margin-top: 1%;
+            }
+
+        </style>
+        <p id="number-of-questions"><%=numbers.length%></p>
+        <% const question_numbers = [];%>
+        <% const ids = [];%>
+        <% let test_questions = [] %> 
         <% numbers.forEach(function(e) { %>
-            <h1><%= questions[e].question %></h1>
-            <h2><%= questions[e].options[optionNumbers[0]]%> </h2>
-            <h2><%= questions[e].options[optionNumbers[1]]%> </h2>
-            <h2><%= questions[e].options[optionNumbers[2]]%> </h2>
-            <h2><%= questions[e].options[optionNumbers[3]]%> </h2>
+            <% test_questions.push(questions[e]) %> 
+            <%question_numbers.push(e) %>
+            <%ids.push(questions[e]._id) %>
         <% }) %>
+        <% const saving_array = []; %>
+        <% saving_array.push(ids) %>
+        <% saving_array.push(optionNumbers) %>
+        <% function shuffle(array) { %>
+            <% var currentIndex = array.length, temporaryValue, randomIndex; %>
+
+            <% while (0 !== currentIndex) { %>
+
+              <% randomIndex = Math.floor(Math.random() * currentIndex); %>
+              <% currentIndex -= 1; %>
+
+              <% temporaryValue = array[currentIndex]; %>
+              <% array[currentIndex] = array[randomIndex]; %>
+              <% array[randomIndex] = temporaryValue; %>
+            <% } %>
+          
+            <% return array; %>
+          <% } %>
+        
+        <div class="progress-center-thing">
+            <div class="progress bar-progress-test">
+                <div id="get-bar-js" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+            
+                <% let allOptions = [questions[0].correct_answer] %>
+                <% allOptions.push(questions[0].options[optionNumbers[0]])%> 
+                <% allOptions.push(questions[0].options[optionNumbers[1]])%> 
+                <% allOptions.push(questions[0].options[optionNumbers[2]])%> 
+                <% shuffle(allOptions); %> 
+                <% console.log(allOptions) %> 
+                <div class="quiz-div">
+                    <div class= "question-div">
+                        <h1><%= questions[0].question %></h1>
+                    </div>
+                    <div id="options">
+                        <div id="options-top-row">
+                            <button id="optionA"><%= allOptions[0] %></button>
+                            <button id="optionB"><%= allOptions[1] %></button>
+                        </div>
+                        <div id="options-bottom-row">
+                            <button id="optionC"><%= allOptions[2] %></button>
+                            <button id="optionD"><%= allOptions[3] %></button>
+                        </div>
+                    </div>
+                </div>
+                
+            
+
+            <button onclick="myFunction()" class="next-btn">Next Questions</button>
+        </div>
+
+        <script>
+            console.log(document.getElementById("number-of-questions").textContent);
+
+            function myFunction(){
+                let noq = document.getElementById("number-of-questions").textContent;
+                const increase_amount = 100 / noq;
+                let current_progress_bar_style = String(document.getElementById('get-bar-js').attributes.style.value);
+                let current_width = Number(current_progress_bar_style.substring(7).replace('%',''));
+                let new_width = current_width + increase_amount;
+                document.getElementById('get-bar-js').setAttribute("style", `width: ${new_width}%`);
+            }
+        </script>
         <%- include("./partials/btstjs")  %>
     </body>
 </html>
+
+
+<!-- <% numbers.forEach(function(e) { %>
+    <h1><%= questions[e].question %></h1>
+    <h2><%= questions[e].correct_answer%> </h2>
+    <h2><%= questions[e].options[optionNumbers[1]]%> </h2>
+    <h2><%= questions[e].options[optionNumbers[2]]%> </h2>
+    <h2><%= questions[e].options[optionNumbers[3]]%> </h2>
+    <h3><%= questions[e].solution%></h3>
+<% }) %> -->
+
+
+
+<!-- <h1><%= questions[question_numbers[0]].question %></h1>
+<h2><%= questions[question_numbers[0]].correct_answer%> </h2>
+<h2><%= questions[question_numbers[0]].options[optionNumbers[1]]%> </h2>
+<h2><%= questions[question_numbers[0]].options[optionNumbers[2]]%> </h2>
+<h2><%= questions[question_numbers[0]].options[optionNumbers[3]]%> </h2>
+<h3><%= questions[question_numbers[0]].solution%></h3> -->
