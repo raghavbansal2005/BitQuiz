@@ -10,9 +10,15 @@
             font-family : Rubik; 
             }
             .bar-progress-test{
+                position: fixed;
                 width: 40%;
-                margin-top: 130px;
                 margin-left: 30%;
+                margin-right: 30%;
+            }
+            .top-nav-for-scroll{
+                position: fixe;
+                height: 1%;
+                background: black;
             }
             /* .next-btn{
                 margin-top: 33%;
@@ -26,7 +32,7 @@
                 background: white;
                 width: 50%;
                 margin-left: 25%;
-                margin-top: 4.5%;
+                margin-top: 5%;
                 padding-left: 4%;
                 padding-right: 4%;
                 padding-top: 1%;
@@ -92,25 +98,30 @@
           
             <% return array; %>
           <% } %>
+          <% let current_question_number = 0 %> 
         
         <div class="progress-center-thing">
-            <div class="progress bar-progress-test">
-                <div id="get-bar-js" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            <div class="top-nav-for-scroll">
+                <div class="progress bar-progress-test">
+                    <div id="get-bar-js" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                </div>
             </div>
-            
-                <% let allOptions = [questions[0].correct_answer] %>
-                <% allOptions.push(questions[0].options[optionNumbers[0]])%> 
-                <% allOptions.push(questions[0].options[optionNumbers[1]])%> 
-                <% allOptions.push(questions[0].options[optionNumbers[2]])%> 
+        </div>
+
+                <% question_numbers.forEach(function(e) {  %>
+                <% let allOptions = [questions[e].correct_answer] %>
+                <% allOptions.push(questions[e].options[optionNumbers[0]])%> 
+                <% allOptions.push(questions[e].options[optionNumbers[1]])%> 
+                <% allOptions.push(questions[e].options[optionNumbers[2]])%> 
                 <% shuffle(allOptions); %> 
                 <% console.log(allOptions) %> 
                 <div class="quiz-div">
                     <div class= "question-div">
-                        <h1><%= questions[0].question %></h1>
+                        <h1><%= questions[e].question %></h1>
                     </div>
                     <div id="options">
                         <div id="options-top-row">
-                            <button id="optionA"><%= allOptions[0] %></button>
+                            <button id="optionA" onclick="answeredFunction()"><%= allOptions[0] %></button>
                             <button id="optionB"><%= allOptions[1] %></button>
                         </div>
                         <div id="options-bottom-row">
@@ -119,22 +130,38 @@
                         </div>
                     </div>
                 </div>
+            <% }) %>
                 
             
 
             <button onclick="myFunction()" class="next-btn">Next Questions</button>
-        </div>
+        
 
         <script>
             console.log(document.getElementById("number-of-questions").textContent);
 
-            function myFunction(){
-                let noq = document.getElementById("number-of-questions").textContent;
-                const increase_amount = 100 / noq;
-                let current_progress_bar_style = String(document.getElementById('get-bar-js').attributes.style.value);
-                let current_width = Number(current_progress_bar_style.substring(7).replace('%',''));
-                let new_width = current_width + increase_amount;
-                document.getElementById('get-bar-js').setAttribute("style", `width: ${new_width}%`);
+            // function myFunction(){
+            //     let noq = document.getElementById("number-of-questions").textContent;
+            //     const increase_amount = 100 / noq;
+            //     let current_progress_bar_style = String(document.getElementById('get-bar-js').attributes.style.value);
+            //     let current_width = Number(current_progress_bar_style.substring(7).replace('%',''));
+            //     let new_width = current_width + increase_amount;
+            //     document.getElementById('get-bar-js').setAttribute("style", `width: ${new_width}%`);
+            // }
+            window.onscroll = function() {myFunction()};
+
+            function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById('get-bar-js').setAttribute("style", `width: ${scrolled}%`);
+            // document.getElementById("myBar").style.width = scrolled + "%";
+            }
+            function answeredFunction(){
+                var current_number = `<%= current_question_number%>`;
+                current_number = Number(current_number);
+                current_number++;
+                console.log(current_number);
             }
         </script>
         <%- include("./partials/btstjs")  %>
