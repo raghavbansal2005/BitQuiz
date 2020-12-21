@@ -4,22 +4,28 @@
     </head>
     <body>
         <style>
+            body{
+                margin: 0px;
+            }
             body, html{
             height: 100%;
             background: rgb(240, 242, 245);
             font-family : Rubik; 
             }
-            .bar-progress-test{
+            .top-box-for-scroll{
                 position: fixed;
+                width: 100%;
+                height: 3%;
+                background: rgb(240, 242, 245);
+                padding-top: 17px;
+                margin-top: -16px;
+            }
+            .bar-progress-test{
                 width: 40%;
                 margin-left: 30%;
                 margin-right: 30%;
             }
-            .top-nav-for-scroll{
-                position: fixe;
-                height: 1%;
-                background: black;
-            }
+
             /* .next-btn{
                 margin-top: 33%;
                 margin-left: 75%;
@@ -43,6 +49,7 @@
                 margin-left: 28.5%;
                 width: 70%;
                 margin-top: 1.5%;
+                font-size: 2rem;
             }
             #optionA{
                 width: 30%;
@@ -71,7 +78,7 @@
             }
 
         </style>
-        <p id="number-of-questions"><%=numbers.length%></p>
+        <!-- <p id="number-of-questions"><%=numbers.length%></p>
         <% const question_numbers = [];%>
         <% const ids = [];%>
         <% let test_questions = [] %> 
@@ -101,7 +108,7 @@
           <% let current_question_number = 0 %> 
         
         <div class="progress-center-thing">
-            <div class="top-nav-for-scroll">
+            <div class="top-box-for-scroll">
                 <div class="progress bar-progress-test">
                     <div id="get-bar-js" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
                 </div>
@@ -121,16 +128,16 @@
                     </div>
                     <div id="options">
                         <div id="options-top-row">
-                            <button id="optionA" onclick="answeredFunction()"><%= allOptions[0] %></button>
-                            <button id="optionB"><%= allOptions[1] %></button>
+                            <button id="optionA" onclick="answeredFunction(this.id)"><%= allOptions[0] %></button>
+                            <button id="optionB" onclick="answeredFunction(this.id)"><%= allOptions[1] %></button>
                         </div>
                         <div id="options-bottom-row">
-                            <button id="optionC"><%= allOptions[2] %></button>
-                            <button id="optionD"><%= allOptions[3] %></button>
+                            <button id="optionC" onclick="answeredFunction(this.id)"><%= allOptions[2] %></button>
+                            <button id="optionD" onclick="answeredFunction(this.id)"><%= allOptions[3] %></button>
                         </div>
                     </div>
                 </div>
-            <% }) %>
+            <% }) %> -->
                 
             
 
@@ -138,7 +145,7 @@
         
 
         <script>
-            console.log(document.getElementById("number-of-questions").textContent);
+            console.log(document.cookie);
 
             // function myFunction(){
             //     let noq = document.getElementById("number-of-questions").textContent;
@@ -157,32 +164,10 @@
             document.getElementById('get-bar-js').setAttribute("style", `width: ${scrolled}%`);
             // document.getElementById("myBar").style.width = scrolled + "%";
             }
-            function answeredFunction(){
-                var current_number = `<%= current_question_number%>`;
-                current_number = Number(current_number);
-                current_number++;
-                console.log(current_number);
+            function answeredFunction(clickedId){
+                document.getElementById(clickedId).style.background = "black";
             }
         </script>
         <%- include("./partials/btstjs")  %>
     </body>
 </html>
-
-
-<!-- <% numbers.forEach(function(e) { %>
-    <h1><%= questions[e].question %></h1>
-    <h2><%= questions[e].correct_answer%> </h2>
-    <h2><%= questions[e].options[optionNumbers[1]]%> </h2>
-    <h2><%= questions[e].options[optionNumbers[2]]%> </h2>
-    <h2><%= questions[e].options[optionNumbers[3]]%> </h2>
-    <h3><%= questions[e].solution%></h3>
-<% }) %> -->
-
-
-
-<!-- <h1><%= questions[question_numbers[0]].question %></h1>
-<h2><%= questions[question_numbers[0]].correct_answer%> </h2>
-<h2><%= questions[question_numbers[0]].options[optionNumbers[1]]%> </h2>
-<h2><%= questions[question_numbers[0]].options[optionNumbers[2]]%> </h2>
-<h2><%= questions[question_numbers[0]].options[optionNumbers[3]]%> </h2>
-<h3><%= questions[question_numbers[0]].solution%></h3> -->

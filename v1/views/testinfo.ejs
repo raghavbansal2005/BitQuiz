@@ -122,9 +122,12 @@
 
 <div class="same-line-maker">
 
+    <% let numberOfQuestions = numbers.length %> 
+    <% console.log(numberOfQuestions) %> 
+
     <div class="form-control-nine">
         <div class="info-card-div">
-            <h1 class="info-card-text">You are about to take a <span style="font-weight: 600;"><%=numbers.length%></span> questions test test over <span style="font-weight: 600;"><%= questions[0].topic%></span></h1>
+            <h1 class="info-card-text">You are about to take a <span style="font-weight: 600;"><%=length%></span> questions test test over <span style="font-weight: 600;"><%= questions[0].topic%></span></h1>
         </div>
         <hr>
         <div class="redirect-btn">

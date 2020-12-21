@@ -152,9 +152,10 @@ app.get("/quiz/:topic/info", async( req, res) => {
         b++;
       }
     }
+    let length = questions_numbers.length;
     res.cookie('numbers', questions_numbers);
     res.cookie('optionNumbers', optionNumbers);
-    Question.find({topicurl: req.params.topic}).then(q => res.render("testinfo", {questions: q, numbers: req.cookies.numbers}));
+    Question.find({topicurl: req.params.topic}).then(q => res.render("testinfo", {questions: q, numbers: req.cookies.numbers, length: length}));
   }
 })
 
@@ -163,12 +164,23 @@ app.get("/quiz/:topic/quiz", async (req, res) => {
   if(!req.isAuthenticated()){
     res.redirect("/register");
   } else if(req.isAuthenticated()) {
-
-    Question.find({topicurl: req.params.topic}).then(q => res.render("test", {questions: q, numbers: req.cookies.numbers, optionNumbers: req.cookies.optionNumbers, numberOfQuestions: req.cookies.numbers.length}));
+    const questions = [];
+    const questions_to_send = [];
+    const question_numbers = req.cookies.numbers;
+    await Question.find({topicurl: req.params.topic}).then(q => {
+      console.log("asdfasdasds")
+      questions.push(JSON.parse(JSON.stringify(q)))
+    });
+    question_numbers.forEach(number => {
+      questions_to_send.push(questions[number]);
+    });
+    console.log(question_numbers)
+    console.log(questions_to_send);
+    res.render("test")
   }
 })
 
-
+//{questions: q, numbers: req.cookies.numbers, optionNumbers: req.cookies.optionNumbers, numberOfQuestions: req.cookies.numbers.length}
 
 
 
