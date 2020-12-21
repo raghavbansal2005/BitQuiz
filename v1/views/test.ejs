@@ -4,28 +4,22 @@
     </head>
     <body>
         <style>
-            body{
-                margin: 0px;
-            }
             body, html{
             height: 100%;
             background: rgb(240, 242, 245);
             font-family : Rubik; 
             }
-            .top-box-for-scroll{
-                position: fixed;
-                width: 100%;
-                height: 3%;
-                background: rgb(240, 242, 245);
-                padding-top: 17px;
-                margin-top: -16px;
-            }
             .bar-progress-test{
+                position: fixed;
                 width: 40%;
                 margin-left: 30%;
                 margin-right: 30%;
             }
-
+            .top-nav-for-scroll{
+                position: fixed;
+                height: 1%;
+                background: black;
+            }
             /* .next-btn{
                 margin-top: 33%;
                 margin-left: 75%;
@@ -49,7 +43,6 @@
                 margin-left: 28.5%;
                 width: 70%;
                 margin-top: 1.5%;
-                font-size: 2rem;
             }
             #optionA{
                 width: 30%;
@@ -78,96 +71,16 @@
             }
 
         </style>
-        <!-- <p id="number-of-questions"><%=numbers.length%></p>
-        <% const question_numbers = [];%>
-        <% const ids = [];%>
-        <% let test_questions = [] %> 
-        <% numbers.forEach(function(e) { %>
-            <% test_questions.push(questions[e]) %> 
-            <%question_numbers.push(e) %>
-            <%ids.push(questions[e]._id) %>
-        <% }) %>
-        <% const saving_array = []; %>
-        <% saving_array.push(ids) %>
-        <% saving_array.push(optionNumbers) %>
-        <% function shuffle(array) { %>
-            <% var currentIndex = array.length, temporaryValue, randomIndex; %>
-
-            <% while (0 !== currentIndex) { %>
-
-              <% randomIndex = Math.floor(Math.random() * currentIndex); %>
-              <% currentIndex -= 1; %>
-
-              <% temporaryValue = array[currentIndex]; %>
-              <% array[currentIndex] = array[randomIndex]; %>
-              <% array[randomIndex] = temporaryValue; %>
-            <% } %>
-          
-            <% return array; %>
-          <% } %>
-          <% let current_question_number = 0 %> 
-        
-        <div class="progress-center-thing">
-            <div class="top-box-for-scroll">
-                <div class="progress bar-progress-test">
-                    <div id="get-bar-js" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
-                </div>
-            </div>
-        </div>
-
-                <% question_numbers.forEach(function(e) {  %>
-                <% let allOptions = [questions[e].correct_answer] %>
-                <% allOptions.push(questions[e].options[optionNumbers[0]])%> 
-                <% allOptions.push(questions[e].options[optionNumbers[1]])%> 
-                <% allOptions.push(questions[e].options[optionNumbers[2]])%> 
-                <% shuffle(allOptions); %> 
-                <% console.log(allOptions) %> 
-                <div class="quiz-div">
-                    <div class= "question-div">
-                        <h1><%= questions[e].question %></h1>
-                    </div>
-                    <div id="options">
-                        <div id="options-top-row">
-                            <button id="optionA" onclick="answeredFunction(this.id)"><%= allOptions[0] %></button>
-                            <button id="optionB" onclick="answeredFunction(this.id)"><%= allOptions[1] %></button>
-                        </div>
-                        <div id="options-bottom-row">
-                            <button id="optionC" onclick="answeredFunction(this.id)"><%= allOptions[2] %></button>
-                            <button id="optionD" onclick="answeredFunction(this.id)"><%= allOptions[3] %></button>
-                        </div>
-                    </div>
-                </div>
-            <% }) %> -->
-                
-            
-
-            <button onclick="myFunction()" class="next-btn">Next Questions</button>
-        
-
         <script>
-            console.log(document.cookie);
-
-            // function myFunction(){
-            //     let noq = document.getElementById("number-of-questions").textContent;
-            //     const increase_amount = 100 / noq;
-            //     let current_progress_bar_style = String(document.getElementById('get-bar-js').attributes.style.value);
-            //     let current_width = Number(current_progress_bar_style.substring(7).replace('%',''));
-            //     let new_width = current_width + increase_amount;
-            //     document.getElementById('get-bar-js').setAttribute("style", `width: ${new_width}%`);
-            // }
-            window.onscroll = function() {myFunction()};
-
-            function myFunction() {
-            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            var scrolled = (winScroll / height) * 100;
-            document.getElementById('get-bar-js').setAttribute("style", `width: ${scrolled}%`);
-            // document.getElementById("myBar").style.width = scrolled + "%";
-            }
-            function answeredFunction(clickedId){
-                document.getElementById(clickedId).style.background = "black";
-            }
+            const cookieValue = document.cookie.split('; ').find(row => row.startsWith('questionsFirstThree')).split('=')[1];
+            //console.log(cookieValue)
+            let decodedCookieValue = decodeURIComponent(cookieValue.toString());
+            decodedCookieValue = decodedCookieValue.substring(2)
+            decodedCookieValueJson = JSON.parse(decodedCookieValue)
+            console.log(decodedCookieValueJson[0].options);
         </script>
         <%- include("./partials/btstjs")  %>
     </body>
 </html>
+
+

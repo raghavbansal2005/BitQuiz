@@ -167,16 +167,16 @@ app.get("/quiz/:topic/quiz", async (req, res) => {
     
     const questions_to_send = [];
     const question_numbers = req.cookies.numbers;
-    // await Question.find({topicurl: req.params.topic}).lean().exec(function(err, docs){
-    //   questions.push(docs);
-    // })
     let questions = await Question.find({ topicurl: req.params.topic })
     question_numbers.forEach(number => {
       questions_to_send.push(questions[number]);
     });
-    console.log(question_numbers)
-    console.log(questions_to_send);
-    res.render("test")
+    let questionsForCookiesFirstThree = [questions_to_send[0],questions_to_send[1],questions_to_send[2]];
+    let questionsForCookiesSecondThree = [questions_to_send[3],questions_to_send[4],questions_to_send[3]];
+    console.log(typeof questions_to_send);
+    res.cookie("questionsFirstThree", questionsForCookiesFirstThree);
+    res.cookie("questionsSecondThree", questionsForCookiesSecondThree)
+    res.render("test");
   }
 })
 
