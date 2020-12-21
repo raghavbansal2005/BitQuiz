@@ -164,13 +164,13 @@ app.get("/quiz/:topic/quiz", async (req, res) => {
   if(!req.isAuthenticated()){
     res.redirect("/register");
   } else if(req.isAuthenticated()) {
-    const questions = [];
+    
     const questions_to_send = [];
     const question_numbers = req.cookies.numbers;
-    await Question.find({topicurl: req.params.topic}).then(q => {
-      console.log("asdfasdasds")
-      questions.push(JSON.parse(JSON.stringify(q)))
-    });
+    // await Question.find({topicurl: req.params.topic}).lean().exec(function(err, docs){
+    //   questions.push(docs);
+    // })
+    let questions = await Question.find({ topicurl: req.params.topic })
     question_numbers.forEach(number => {
       questions_to_send.push(questions[number]);
     });
