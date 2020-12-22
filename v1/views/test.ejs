@@ -71,13 +71,21 @@
             }
 
         </style>
+
+        <p id="question">sdfsdf</p>
+        <button onclick="nextQuestion()">QUESTION</button>
+
         <script>
-            const cookieValue = document.cookie.split('; ').find(row => row.startsWith('questionsFirstThree')).split('=')[1];
-            //console.log(cookieValue)
-            let decodedCookieValue = decodeURIComponent(cookieValue.toString());
-            decodedCookieValue = decodedCookieValue.substring(2)
+            let currentQuestionNumber = 1
+            const cookieValue = document.cookie.split('; ').find(row => row.startsWith('questionsFirstThreee')).split('=')[1];
+            console.log(cookieValue)
+            let decodedCookieValue = decodeURIComponent(cookieValue.toString().substring(2));
             decodedCookieValueJson = JSON.parse(decodedCookieValue)
-            console.log(decodedCookieValueJson[0].options);
+            function nextQuestion() {
+                document.getElementById('question').textContent = decodedCookieValueJson[currentQuestionNumber -1].question;
+                currentQuestionNumber++;
+            }
+
         </script>
         <%- include("./partials/btstjs")  %>
     </body>
