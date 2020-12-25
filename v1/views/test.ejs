@@ -76,13 +76,27 @@
         <button onclick="nextQuestion()">QUESTION</button>
 
         <script>
-            let currentQuestionNumber = 1
-            const cookieValue = document.cookie.split('; ').find(row => row.startsWith('questionsFirstThreee')).split('=')[1];
-            console.log(cookieValue)
+            allQuestions = [];
+            const cookieValue = document.cookie.split('; ').find(row => row.startsWith('questionsFirstThree')).split('=')[1];
             let decodedCookieValue = decodeURIComponent(cookieValue.toString().substring(2));
             decodedCookieValueJson = JSON.parse(decodedCookieValue)
+            decodedCookieValueJson.forEach(element => {
+                allQuestions.push(element);
+            });
+            // const cookieValueTwo = document.cookie.split('; ').find(row => row.startsWith('questionsSecondThree')).split('=')[1];
+            // let decodedCookieValueTwo = decodeURIComponent(cookieValueTwo.toString().substring(2));
+            // decodedCookieValueJsonTwo = JSON.parse(decodedCookieValueTwo)
+            // decodedCookieValueJsonTwo.forEach(element => {
+            //     allQuestions.push(element);
+            // });
+            
+            
+
+            let currentQuestionNumber = 1
+
+
             function nextQuestion() {
-                document.getElementById('question').textContent = decodedCookieValueJson[currentQuestionNumber -1].question;
+                document.getElementById('question').textContent = allQuestions[currentQuestionNumber -1].question;
                 currentQuestionNumber++;
             }
 
