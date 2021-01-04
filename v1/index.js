@@ -194,20 +194,29 @@ app.get("/quiz/:topic/quiz", async (req, res) => {
 
 app.get("/quiz/:topic/results", async(req, res) => {
   if (!req.isAuthenticated()){
-    res.redirect("/register");
+    res.redirect("/");
   } else {
-    let addingArray = await User.findOne({username : req.user.username});
-    addingArray = addingArray.history;
-    addingArray;
-    res.render("results", {data: addingArray.slice(-1)[0]});
+    let currentUser =  await User.findOne({username : req.user.username});
+    console.log(currentUser);
+    history = currentUser.history;
+    currentTest = history.slice(-1)[0];
+    ids = currentTest[0];
+    console.log(ids);
+    let questions = [];
+    for (const id of ids){
+      let currentQuestion = await Question.findOne({_id: id});
+      questions.push(currentQuestion);
+    }
+    res.render("results", {testData: currentUser.history.slice(-1)[0], questionData: questions});
   }
 })
 
 app.post("/quiz/:topic/results", async (req, res) => {
-  let addingArray = await User.findOne({username : req.user.username});
-  addingArray = addingArray.history;
-  addingArray.push(JSON.parse(req.body.data));
-  User.findOneAndUpdate({username: req.user.username}, {$set: {history: addingArray}})
+  let currentUser = await User.findOne({username : req.user.username});
+  currentHistory = currentUser.history;
+  currentHistory.push(JSON.parse(req.body.data));
+  console.log(currentHistory);
+  await User.findOneAndUpdate({username: req.user.username}, {$set: {history: currentHistory}})
   console.log("Redirect");
   res.redirect(`/quiz/${req.params.topic}/results`);
 })
