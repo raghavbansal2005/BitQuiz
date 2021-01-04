@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
       <%- include("./partials/header")  %>
-      <link rel="stylesheet" href="css/quiz.css">
+      <link rel="stylesheet" href="css/login.css">
     </head>
 
     <%- include("./partials/flash")  %>
@@ -10,79 +10,73 @@
 
     <body>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-darkk">
-            <div class="container">
-            <a class="navbar-brand" href="#">BQuiz</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav justify-content-end ml-auto">
-                <li class="nav-item dropdown dropdown-text-changer">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown link
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Account</a>
-                    <a class="dropdown-item" href="#">Test Settings</a>
-                    <a class="dropdown-item" href="#">Test History</a>
-                    <a class="dropdown-item" href="#">Analytics</a>
-                    <form id="logout-form" action="/logout" method="POST">
-                      <a class="dropdown-item" href="#" onclick="document.getElementById('logout-form').submit();">Logout</a>
-                    </form>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            </div>
-          </nav>
+
+      <%- include("./partials/navbarquiz")  %>
 
 
+
+      <div class="container">
           <div class="top-row-btns">
-            <button type="button" class="btn btn-secondary top-row-text">All Topics</button>
-            <button type="button" class="btn btn-secondary top-row top-row-text">Test Settings</button>
+            <button type="button" class="btn btn-secondary top-row-text" id="first-top-button">All Topics</button>
+            <button type="button" class="btn btn-secondary top-row top-row-text" id="second-top-button">Test Settings</button>
           </div>
-
+        
           <div class="container-quizzes">
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-12 quiz-cards-top">
                     <div class="card">
                         <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="/quiz/businessmath/info" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Business Math</h5>
+                        <p class="card-text"><strong>Objective Test Competencies:</strong> Basic Math Concepts; Consumer Credit; Data
+                          Analysis and Probability; Decimals; Discounts; Fractions; Percentages</p>
+                        <a href="/quiz/businessmath/info" class="btn btn-primary">Start Test</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12">
+                <div class="col-sm-12 quiz-cards">
                     <div class="card">
                         <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="/quiz/economics/info" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Economics</h5>
+                        <p class="card-text"><strong>Objective Test Competencies:</strong> Basic Economic Concepts and Principles; Monetary
+                          and Fiscal Policy; Productivity; Macroeconomics; Market Structures; Investments
+                          and Interest Rates; Government Role; Types of Businesses/Economic Institutions;
+                          Business Cycles/Circular Flow; Supply & Demand; International Trade/Global
+                          Economics
+                          </p>
+                        <a href="/quiz/economics/info" class="btn btn-primary">Start Test</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12">
+                <div class="col-sm-12 quiz-cards">
                     <div class="card">
                         <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="/quiz/bankingfinsystems/info" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Banking Finance Systems</h5>
+                        <p class="card-text"><strong>Objective Test Competencies:</strong> Concepts and
+                          Practices; Basic Terminology; Government
+                          Regulation of Financial Services; Impact of
+                          Technology on Financial Services; Types and
+                          Differences of Various Institutions; Ethics;
+                          Careers in Financial Services; Taxation
+                          </p>
+                        <a href="/quiz/bankingfinsystems/info" class="btn btn-primary">Start Test</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12">
+                <div class="col-sm-12 quiz-cards">
                     <div class="card">
                         <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="/quiz/businesscommunication/info" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Business Communication</h5>
+                        <p class="card-text"><strong>Objective Test Competencies:</strong> Nonverbal and Verbal Communication;
+                          Communication Concepts; Report Application; Grammar; Reading
+                          Comprehension; Editing and Proofreading; Word Definition and Usage;
+                          Capitalization and Punctuation; Spelling; Digital Communication</p>
+                        <a href="/quiz/businesscommunication/info" class="btn btn-primary">Start Test</a>
                         </div>
                     </div>
                 </div>
             </div>
           </div>
+        </div>
         
 
           <%- include("./partials/btstjs")  %>

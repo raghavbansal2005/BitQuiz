@@ -121,7 +121,8 @@ app.get("/quiz", async (req, res) => {
   if(!req.isAuthenticated()){
     res.redirect("/register");
   } else{
-    res.render("quiz");
+    res.render("quiz", {username: req.user.username});
+    console.log(req.user);
   }
 });
 
@@ -133,10 +134,10 @@ app.get("/quiz/:topic/info", async( req, res) => {
     res.redirect("/register");
   }else {
     let questions_numbers = [];
-    let num_of_questions = 6;
+    let num_of_questions = 8;
     let i = 0;
     while (i < num_of_questions){
-      let number_for_now = Math.random() * 9;
+      let number_for_now = Math.random() * 8;
       let question_number = Math.floor(number_for_now)
       if(!questions_numbers.includes(question_number)){
         questions_numbers.push(question_number);
@@ -172,13 +173,46 @@ app.get("/quiz/:topic/quiz", async (req, res) => {
       questions_to_send.push(questions[number]);
     });
     let questionsForCookiesFirstThree = [questions_to_send[0],questions_to_send[1],questions_to_send[2]];
-    let questionsForCookiesSecondThree = [questions_to_send[3],questions_to_send[4],questions_to_send[3]];
-    console.log(typeof questions_to_send);
+    let questionsForCookiesSecondThree = [questions_to_send[3],questions_to_send[4],questions_to_send[5]];
+    let questionsForCookiesThirdThree = [questions_to_send[6],questions_to_send[7],questions_to_send[8]];
+    let questionsForCookiesFourthThree = [questions_to_send[9],questions_to_send[10],questions_to_send[11]];
+    let questionsForCookiesFifthThree = [questions_to_send[12],questions_to_send[13],questions_to_send[14]];
+    let questionsForCookiesSixthThree = [questions_to_send[15],questions_to_send[16],questions_to_send[17]];
+    let questionsForCookiesSeventhThree = [questions_to_send[18],questions_to_send[19],questions_to_send[20]];
+    ////////////////////////////////////////////////
     res.cookie("questionsFirstThree", questionsForCookiesFirstThree);
     res.cookie("questionsSecondThree", questionsForCookiesSecondThree)
+    res.cookie("questionsThirdThree", questionsForCookiesThirdThree);
+    res.cookie("questionsFourthThree", questionsForCookiesFourthThree);
+    res.cookie("questionsFifthThree", questionsForCookiesFifthThree);
+    res.cookie("questionsSixthThree", questionsForCookiesSixthThree);
+    res.cookie("questionsSeventhThree", questionsForCookiesSeventhThree);
     res.render("test");
   }
 })
+
+
+app.get("/quiz/:topic/results", async(req, res) => {
+  if (!req.isAuthenticated()){
+    res.redirect("/register");
+  } else {
+    let addingArray = await User.findOne({username : req.user.username});
+    addingArray = addingArray.history;
+    addingArray;
+    res.render("results", {data: addingArray.slice(-1)[0]});
+  }
+})
+
+app.post("/quiz/:topic/results", async (req, res) => {
+  let addingArray = await User.findOne({username : req.user.username});
+  addingArray = addingArray.history;
+  addingArray.push(JSON.parse(req.body.data));
+  User.findOneAndUpdate({username: req.user.username}, {$set: {history: addingArray}})
+  console.log("Redirect");
+  res.redirect(`/quiz/${req.params.topic}/results`);
+})
+
+
 
 //{questions: q, numbers: req.cookies.numbers, optionNumbers: req.cookies.optionNumbers, numberOfQuestions: req.cookies.numbers.length}
 

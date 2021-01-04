@@ -11,7 +11,7 @@
         </style>
 
         <!---------------------------------------------------->
-        <div class="logo-login">
+        <!-- <div class="logo-login">
             <h1 class="logo-login-h1">BQuiz</h1>
             <hr class="logo-line">
             <%- include("../partials/flash")  %> 
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <div class="submit-btn">
-                        <button class="btn btn-success submit-text">Login</button>
+                        <button type="button" class="btn btn-primary btn-lg">Login</button>
                     </div>
                 </form>
                 <hr>
@@ -46,9 +46,28 @@
             </div>
 
         </div>
-    </body>
+    </body> -->
 
+    <%- include("./../partials/navbar")  %>
 
+            <div class="container" id="contactContainer">
+                <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+                    <h1 class="display-4">Login</h1>
+                    <p class="lead">Welcome Back To BitQuiz</p>
+                </div>
+                <%- include("../partials/flash")  %> 
+                <form class = "needs-validation" method="POST" action = "/login" novalidate>
+                    <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                    <div class="form-group" id="password-form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <button class="btn btn-lg btn-block btn-primary" id="submit-button" type="submit">Submit</button>
+                </form>
+            </div>
 
 
 

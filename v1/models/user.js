@@ -8,8 +8,11 @@ const UserSchema = new Schema({
         type: String,
         required: true,
         unique: true
+    },
+    history: {
+        type: Array,
     }
-})
+});
 
 UserSchema.plugin(passportLocalMongoose);  
 

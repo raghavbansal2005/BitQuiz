@@ -6,99 +6,371 @@
         <style>
             body, html{
             height: 100%;
-            background: rgb(240, 242, 245);
+            background: white;
             font-family : Rubik; 
             }
-            .bar-progress-test{
-                position: fixed;
-                width: 40%;
-                margin-left: 30%;
-                margin-right: 30%;
+
+            .options-class:hover{
+                border: blue 1px solid;
             }
-            .top-nav-for-scroll{
-                position: fixed;
-                height: 1%;
-                background: black;
+            .progress-top-thing{
+                margin-top: 6%;
             }
-            /* .next-btn{
-                margin-top: 33%;
-                margin-left: 75%;
-            } */
-            #number-of-questions{
-                font-size: 0px;
+            .entire-question-div {
+                
             }
             .question-div{
-                
-                background: white;
-                width: 50%;
-                margin-left: 25%;
-                margin-top: 5%;
-                padding-left: 4%;
-                padding-right: 4%;
+                width: 33%;
+                margin-left: 32%;
+                margin-top: 2%;
                 padding-top: 1%;
-                padding-bottom: .5%;
-                border-radius: 20px;
+                padding-bottom: .8%;
+                font-size: 1.8rem;
+                padding-left: .2%;
             }
-            #options{
-                margin-left: 28.5%;
-                width: 70%;
-                margin-top: 1.5%;
+            .options-div{
+                margin-top: 3%;
+                font-size: 1.3rem;
             }
-            #optionA{
+            #option-0{
+                border: rgb(165, 165, 165) 1.5px solid;
+                border-radius: 14px;
+                width: 40%;
+                display: inline-block;
+                padding-left: 2%;
+                background: white;
+                height: 7%;
+                outline: none;
+                vertical-align: top;
+            }
+            #option-1{
+                border: rgb(165, 165, 165) 1.5px solid;
+                border-radius: 14px;
+                width: 40%;
+                margin-left: 10%;
+                display: inline-block;
+                padding-left: 2%;
+                background: white;
+                height: 7%;
+                outline: none;
+                vertical-align: top;
+            }
+            #option-2{
+                border: rgb(165, 165, 165) 1.5px solid;
+                border-radius: 14px;
+                width: 40%;
+                display: inline-block;
+                padding-left: 2%;
+                background: white;
+                height: 7%;
+                outline: none;
+                vertical-align: top;
+            }
+            #option-3{
+                border: rgb(165, 165, 165) 1.5px solid;
+                border-radius: 14px;
+                width: 40%;
+                margin-left: 10%;
+                display: inline-block;
+                padding-left: 2%;
+                background: white;
+                height: 7%;
+                outline: none;
+                vertical-align: top;
+            }
+            #option-0:disabled{
+                color: black;
+            }
+            #option-1{
+                color: black;
+            }
+            #option-2{
+                color: black;
+            }
+            #option-3{
+                color: black;
+            }
+            #option-0:hover{
+                background: rgb(240, 242, 245);
+            }
+            #option-1:hover{
+                background: rgb(240, 242, 245);
+            }
+            #option-2:hover{
+                background: rgb(240, 242, 245);
+            }
+            #option-3:hover{
+                background: rgb(240, 242, 245);
+            }
+            .last-two-options{
+                margin-top: 4%;
+            }
+            .bg-darkk{
+                background: rgb(240, 242, 245);
+                height: 5%;
+            }
+            .navbar-brand{
+                font-size: 2rem;;
+            }
+            .Extra-Stuff{
+                margin-top: 3%;
+                /* border: 1px solid black; */
+                width: 52%;
+                margin-left: 22%;
+                overflow: hidden;
+            }
+            .end-btn{
+                float: right;
+            }
+            #competency-paragraph{
+                /* border: black 1px solid; */
+                font-size: 1.2rem;
+                margin-left: 3%;
                 width: 30%;
-                height: 9%;
-                border-radius: 20px;
             }
-            #optionB{
-                margin-left: 2%;
-                width: 30%;
-                height: 9%;
-                border-radius: 20px;
-            }
-            #optionC{
-                width: 30%;
-                height: 9%;
-                border-radius: 20px;
-            }
-            #optionD{
-                margin-left: 2%;
-                width: 30%;
-                height: 9%;
-                border-radius: 20px;
-            }
-            #options-bottom-row{
-                margin-top: 1%;
+            #solution-paragraph{
+                /* border: black 1px solid; */
+                font-size: 1.2rem;
+                margin-left: 3%;
+                width: 60%;
             }
 
         </style>
 
-        <p id="question">sdfsdf</p>
-        <button onclick="nextQuestion()">QUESTION</button>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-darkk">
+            
+                <a class="navbar-brand" href="/">BitQuiz</a>
+            
+        </nav>
+
+        <div class="container">
+            <div class="progress progress-top-thing">
+                <div id="progress-bar-js" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <div class="entire-question-div">
+            <div class="question-div">
+                <p id="question">sdfsdf</p>
+            </div>
+            <div class="container">
+            <div class="options-div">
+                <div class="first-two-options">
+                    <button class="options-class" id="Option-0" onclick="optionClick(this)">Option 1</button>
+                    <button class="options-class" id="Option-1" onclick="optionClick(this)">Option 2</button>
+                </div>
+                <div class="last-two-options">
+                    <button class="options-class" id="Option-2" onclick="optionClick(this)">Option 3</button>
+                    <button class="options-class" id="Option-3" onclick="optionClick(this)">Option 4</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        
+        <div class="Extra-Stuff">
+        <p id="competency-paragraph"></p>
+
+        <p id="solution-paragraph"></p>
+
+
+
+        
+              
+            <button id="next-question-button" class="btn btn-dark end-btn" onclick="nextQuestion()">NEXT QUESTION</button>
+            
+            <button id="check-results-button" class="btn btn-dark end-btn" onclick="getResults()">CHECK RESULTS</button>
+            
+        
+
+        
+
+        
+        </div>
 
         <script>
+            document.getElementById("check-results-button").style.display = "none";
+            let currentQuestionNumber = 0;
             allQuestions = [];
-            const cookieValue = document.cookie.split('; ').find(row => row.startsWith('questionsFirstThree')).split('=')[1];
-            let decodedCookieValue = decodeURIComponent(cookieValue.toString().substring(2));
-            decodedCookieValueJson = JSON.parse(decodedCookieValue)
-            decodedCookieValueJson.forEach(element => {
-                allQuestions.push(element);
+            let sendingArray = [];
+            let questionsForSendingArray = [];
+            let noofcor = 0;
+            let arrayOfAnswers = [];
+            
+
+
+            let cookieValue = document.cookie.split('; ').find(row => row.startsWith('questionsFirstThree')).split('=')[1];
+            let decodedCookieValue = decodeURIComponent(cookieValue.toString());
+            decodedCookieValue = decodedCookieValue.substring(2);
+            decodedCookieValueJson = JSON.parse(decodedCookieValue);
+            decodedCookieValueJson.forEach(question => {
+                if(question != null){
+                    questionsForSendingArray.push(question);
+                    allQuestions.push(question);
+                }
             });
-            // const cookieValueTwo = document.cookie.split('; ').find(row => row.startsWith('questionsSecondThree')).split('=')[1];
-            // let decodedCookieValueTwo = decodeURIComponent(cookieValueTwo.toString().substring(2));
-            // decodedCookieValueJsonTwo = JSON.parse(decodedCookieValueTwo)
-            // decodedCookieValueJsonTwo.forEach(element => {
-            //     allQuestions.push(element);
-            // });
+
+            cookieValue = document.cookie.split('; ').find(row => row.startsWith('questionsSecondThree')).split('=')[1];
+            decodedCookieValue = decodeURIComponent(cookieValue.toString());
+            decodedCookieValue = decodedCookieValue.substring(2);
+            decodedCookieValueJson = JSON.parse(decodedCookieValue);
+            decodedCookieValueJson.forEach(question => {
+                if(question != null){
+                    questionsForSendingArray.push(question);
+                    allQuestions.push(question);
+                }
+            });
+
+            cookieValue = document.cookie.split('; ').find(row => row.startsWith('questionsThirdThree')).split('=')[1];
+            decodedCookieValue = decodeURIComponent(cookieValue.toString());
+            decodedCookieValue = decodedCookieValue.substring(2);
+            decodedCookieValueJson = JSON.parse(decodedCookieValue);
+            decodedCookieValueJson.forEach(question => {
+                if(question != null){
+                    questionsForSendingArray.push(question);
+                    allQuestions.push(question);
+                }
+            });
+
+            cookieValue = document.cookie.split('; ').find(row => row.startsWith('questionsFourthThree')).split('=')[1];
+            decodedCookieValue = decodeURIComponent(cookieValue.toString());
+            decodedCookieValue = decodedCookieValue.substring(2);
+            decodedCookieValueJson = JSON.parse(decodedCookieValue);
+            decodedCookieValueJson.forEach(question => {
+                if(question != null){
+                    questionsForSendingArray.push(question);
+                    allQuestions.push(question);
+                }
+            });
+
+            cookieValue = document.cookie.split('; ').find(row => row.startsWith('questionsFifthThree')).split('=')[1];
+            decodedCookieValue = decodeURIComponent(cookieValue.toString());
+            decodedCookieValue = decodedCookieValue.substring(2);
+            decodedCookieValueJson = JSON.parse(decodedCookieValue);
+            decodedCookieValueJson.forEach(question => {
+                if(question != null){
+                    questionsForSendingArray.push(question);
+                    allQuestions.push(question);
+                }
+            });
+
+            cookieValue = document.cookie.split('; ').find(row => row.startsWith('questionsSixthThree')).split('=')[1];
+            decodedCookieValue = decodeURIComponent(cookieValue.toString());
+            decodedCookieValue = decodedCookieValue.substring(2);
+            decodedCookieValueJson = JSON.parse(decodedCookieValue);
+            decodedCookieValueJson.forEach(question => {
+                if(question != null){
+                    questionsForSendingArray.push(question);
+                    allQuestions.push(question);
+                }
+            });
+
+            sendingArray.push(questionsForSendingArray);
+
+            cookieValue = document.cookie.split('; ').find(row => row.startsWith('questionsSeventhThree')).split('=')[1];
+            decodedCookieValue = decodeURIComponent(cookieValue.toString());
+            decodedCookieValue = decodedCookieValue.substring(2);
+            decodedCookieValueJson = JSON.parse(decodedCookieValue);
+            decodedCookieValueJson.forEach(question => {
+                if(question != null){
+                    questionsForSendingArray.push(question);
+                    allQuestions.push(question);
+                }
+            });
+
+            let optionNumbersCookieValue = document.cookie.split("; ").find(row => row.startsWith("optionNumbers")).split('=')[1];
+            let decodedOptionNumbersCookieValue = decodeURIComponent(optionNumbersCookieValue.toString())
+            decodedOptionNumbersCookieValue = decodedOptionNumbersCookieValue.substring(2);
+            let optionNumbersJson = JSON.parse(decodedOptionNumbersCookieValue);
+
+
+            document.getElementById('question').textContent = allQuestions[currentQuestionNumber].question;
+            let ansposition = Math.floor(Math.random() * 4);
+            let zerotothree = [0,1,2,3]
+            zerotothree = zerotothree.filter(item => item !== ansposition)
+            document.getElementById(`Option-${ansposition}`).textContent = allQuestions[currentQuestionNumber].correct_answer
+            document.getElementById(`Option-${zerotothree[0]}`).textContent = allQuestions[currentQuestionNumber].options[optionNumbersJson[0]];
+            document.getElementById(`Option-${zerotothree[1]}`).textContent = allQuestions[currentQuestionNumber].options[optionNumbersJson[1]];
+            document.getElementById(`Option-${zerotothree[2]}`).textContent = allQuestions[currentQuestionNumber].options[optionNumbersJson[2]];
+
+            let currentAnsSendingArray = []
+
             
-            
-
-            let currentQuestionNumber = 1
-
-
             function nextQuestion() {
-                document.getElementById('question').textContent = allQuestions[currentQuestionNumber -1].question;
+                let increaseAmount = 100 / allQuestions.length;
+                let currentProgressLength = parseFloat(document.getElementById('progress-bar-js').attributes.style.value.substring(7).slice(0, -1));
+                let newProgressLength = currentProgressLength + increaseAmount;
+                document.getElementById('progress-bar-js').style.width = `${newProgressLength}%`;
+                document.getElementById('competency-paragraph').textContent = ""
+                document.getElementById('solution-paragraph').textContent = ""
+                document.getElementById('Option-0').style.border = "rgb(165, 165, 165) 1.5px solid";
+                document.getElementById('Option-1').style.border = "rgb(165, 165, 165) 1.5px solid";
+                document.getElementById('Option-2').style.border = "rgb(165, 165, 165) 1.5px solid";
+                document.getElementById('Option-3').style.border = "rgb(165, 165, 165) 1.5px solid";
+                document.getElementById('Option-0').disabled = false;
+                document.getElementById('Option-1').disabled = false;
+                document.getElementById('Option-2').disabled = false;
+                document.getElementById('Option-3').disabled = false;
+                document.getElementById('question').textContent = allQuestions[currentQuestionNumber+1].question;
+                ansposition = Math.floor(Math.random() * 4);
+                zerotothree = [0,1,2,3]
+                zerotothree = zerotothree.filter(item => item !== ansposition)
+                document.getElementById(`Option-${ansposition}`).textContent = allQuestions[currentQuestionNumber+1].correct_answer
+                document.getElementById(`Option-${zerotothree[0]}`).textContent = allQuestions[currentQuestionNumber+1].options[optionNumbersJson[0]];
+                document.getElementById(`Option-${zerotothree[1]}`).textContent = allQuestions[currentQuestionNumber+1].options[optionNumbersJson[1]];
+                document.getElementById(`Option-${zerotothree[2]}`).textContent = allQuestions[currentQuestionNumber+1].options[optionNumbersJson[2]];
+                if(currentQuestionNumber == allQuestions.length - 2){
+                    document.getElementById("next-question-button").style.display = "none";
+                    document.getElementById("check-results-button").style.display = "block";
+
+                }
                 currentQuestionNumber++;
             }
+
+            function optionClick(element) {
+                document.getElementById('Option-0').disabled = true;
+                document.getElementById('Option-1').disabled = true;
+                document.getElementById('Option-2').disabled = true;
+                document.getElementById('Option-3').disabled = true;
+                if(String(element.textContent) === String(allQuestions[currentQuestionNumber].correct_answer)){
+                    console.log("Correct")
+                    document.getElementById(element.id).style.border = "solid green 2px";
+                    document.getElementById('competency-paragraph').textContent = "Competency: " + allQuestions[currentQuestionNumber].competency
+                    document.getElementById('solution-paragraph').textContent = "Solution: " + allQuestions[currentQuestionNumber].solution
+                    noofcor++;
+                } else {
+                    console.log("Sorry Incorrect")
+                    document.getElementById(element.id).style.border = "solid red 2px";
+                    document.getElementById(`Option-${ansposition}`).style.border = "solid green 2px";
+                    document.getElementById('competency-paragraph').textContent = "Competency: " + allQuestions[currentQuestionNumber].competency
+                    document.getElementById('solution-paragraph').textContent = "Solution: " + allQuestions[currentQuestionNumber].solution
+                }
+                currentAnsSendingArray = [element.textContent, String(allQuestions[currentQuestionNumber].correct_answer)]
+                arrayOfAnswers.push(currentAnsSendingArray)
+
+            }
+
+            
+            function getResults() {
+                
+                let arrayofnoofcor = [noofcor, allQuestions.length];
+                sendingArray.push(arrayOfAnswers);
+                sendingArray.push(arrayofnoofcor);
+                console.log(JSON.parse(JSON.stringify(sendingArray)));
+                $.ajax({
+                type: "POST",
+                url: `/quiz/${allQuestions[0].topicurl}/results`,
+                data: {data: JSON.stringify(sendingArray)},
+                error: function() {
+                    console.log("Error");
+                },
+                success: function() {
+                    window.location.assign(`/quiz/${allQuestions[0].topicurl}/results`);
+                }
+            });
+            }
+
 
         </script>
         <%- include("./partials/btstjs")  %>
