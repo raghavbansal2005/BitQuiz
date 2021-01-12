@@ -11,6 +11,10 @@ const UserSchema = new Schema({
     },
     history: {
         type: Array,
+    },
+    numOfQuestions: {
+        type: Number,
+        default: 5
     }
 });
 

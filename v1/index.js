@@ -126,6 +126,15 @@ app.get("/quiz", async (req, res) => {
   }
 });
 
+app.get("/settings", async(req, res) => {
+  if(!req.isAuthenticated){
+    res.redirect("/register");
+  } else {
+    let currentUserData = await User.findOne({username: req.user.username});
+    res.render("settings", {data: currentUserData, username: req.user.username});
+  }
+});
+
 
 
 
