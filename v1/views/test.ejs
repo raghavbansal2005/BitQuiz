@@ -194,7 +194,7 @@
             let currentQuestionNumber = 0;
             allQuestions = [];
             let sendingArray = [];
-            let questionsForSendingArray = [];
+            let ids = [];
             let noofcor = 0;
             let arrayOfAnswers = [];
             
@@ -206,7 +206,7 @@
             decodedCookieValueJson = JSON.parse(decodedCookieValue);
             decodedCookieValueJson.forEach(question => {
                 if(question != null){
-                    questionsForSendingArray.push(question);
+                    ids.push(question._id);
                     allQuestions.push(question);
                 }
             });
@@ -217,7 +217,7 @@
             decodedCookieValueJson = JSON.parse(decodedCookieValue);
             decodedCookieValueJson.forEach(question => {
                 if(question != null){
-                    questionsForSendingArray.push(question);
+                    ids.push(question._id);
                     allQuestions.push(question);
                 }
             });
@@ -228,7 +228,7 @@
             decodedCookieValueJson = JSON.parse(decodedCookieValue);
             decodedCookieValueJson.forEach(question => {
                 if(question != null){
-                    questionsForSendingArray.push(question);
+                    ids.push(question._id);
                     allQuestions.push(question);
                 }
             });
@@ -239,7 +239,7 @@
             decodedCookieValueJson = JSON.parse(decodedCookieValue);
             decodedCookieValueJson.forEach(question => {
                 if(question != null){
-                    questionsForSendingArray.push(question);
+                    ids.push(question._id);
                     allQuestions.push(question);
                 }
             });
@@ -250,7 +250,7 @@
             decodedCookieValueJson = JSON.parse(decodedCookieValue);
             decodedCookieValueJson.forEach(question => {
                 if(question != null){
-                    questionsForSendingArray.push(question);
+                    ids.push(question._id);
                     allQuestions.push(question);
                 }
             });
@@ -261,12 +261,12 @@
             decodedCookieValueJson = JSON.parse(decodedCookieValue);
             decodedCookieValueJson.forEach(question => {
                 if(question != null){
-                    questionsForSendingArray.push(question);
+                    ids.push(question._id);
                     allQuestions.push(question);
                 }
             });
 
-            sendingArray.push(questionsForSendingArray);
+            sendingArray.push(ids);
 
             cookieValue = document.cookie.split('; ').find(row => row.startsWith('questionsSeventhThree')).split('=')[1];
             decodedCookieValue = decodeURIComponent(cookieValue.toString());
@@ -274,7 +274,7 @@
             decodedCookieValueJson = JSON.parse(decodedCookieValue);
             decodedCookieValueJson.forEach(question => {
                 if(question != null){
-                    questionsForSendingArray.push(question);
+                    ids.push(question._id);
                     allQuestions.push(question);
                 }
             });
