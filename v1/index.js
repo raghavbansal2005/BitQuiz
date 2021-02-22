@@ -127,7 +127,7 @@ app.get("/quiz", async (req, res) => {
 });
 
 app.get("/settings", async(req, res) => {
-  if(!req.isAuthenticated){
+  if(!req.isAuthenticated()){
     res.redirect("/register");
   } else {
     let currentUserData = await User.findOne({username: req.user.username});
@@ -142,11 +142,13 @@ app.get("/quiz/:topic/info", async( req, res) => {
   if(!req.isAuthenticated()){
     res.redirect("/register");
   }else {
+    let numOfQuestionInTopic = await Question.find({topicurl: req.params.topic});
+    numOfQuestionInTopic =  Number(numOfQuestionInTopic.length);
     let questions_numbers = [];
-    let num_of_questions = 8;
+    let num_of_questions = Number(req.user.numOfQuestions);
     let i = 0;
     while (i < num_of_questions){
-      let number_for_now = Math.random() * 8;
+      let number_for_now = Math.random() * numOfQuestionInTopic;
       let question_number = Math.floor(number_for_now)
       if(!questions_numbers.includes(question_number)){
         questions_numbers.push(question_number);

@@ -357,6 +357,7 @@
                 let arrayofnoofcor = [noofcor, allQuestions.length];
                 sendingArray.push(arrayOfAnswers);
                 sendingArray.push(arrayofnoofcor);
+                sendingArray.push(allQuestions[0].topicurl);
                 console.log(JSON.parse(JSON.stringify(sendingArray)));
                 $.ajax({
                 type: "POST",

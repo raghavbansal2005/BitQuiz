@@ -3,13 +3,97 @@
     <head>
         <%- include("./partials/header")  %>
         <link rel="stylesheet" href="css/login.css">
-    </head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
+         </head>
 
     <body>
         <%- include("./partials/navbarquiz")  %>
 
+        <div style="width: 25%; margin-left: 25%; display: inline-flex;" >
+            <canvas id="myChart" width="400" height="100" ></canvas>
+            <canvas id="secondChart" width="400" height="100" ></canvas>
+        </div>
 
-        <h2 style="color: white;"><%= data %> </h2>
+
+        <% dataHistory = []%>
+        <% data.history.forEach(element => dataHistory.push(element.slice(-1)[0]))%>
+        <h2 style="display: none;" id="historyData"><%=dataHistory%> </h2>
+
+        <h2 style="display: none;" id="numCorrect"><%= data.history.slice(-1)[0].slice(-2)[0][0]%> </h2>
+        <h2 style="display: none;" id="numTotal"><%= data.history.slice(-1)[0].slice(-2)[0][1]%> </h2>
+        <script>
+            let historyData = document.getElementById('historyData').textContent.slice(0, -1);
+            var historyDataArray = historyData.split(',');
+            console.log(historyData)
+
+            numOfCorrect = document.getElementById('numCorrect').textContent;
+            numOfTotalQues = document.getElementById('numTotal').textContent;
+
+            let myChart = document.getElementById('myChart').getContext('2d');
+            dataForLastTest = {
+            datasets: [{
+                data: [numOfCorrect, numOfTotalQues-numOfCorrect],
+                backgroundColor: ["rgb(90,210,0)", "rgb(300,0,40)"]
+            }],
+            labels: ['Correct','Incorrect']
+        };
+
+        var myDoughnutChart = new Chart(myChart, {
+            type: 'doughnut',
+            data: dataForLastTest,
+            options: {}
+        
+        });
+            colors = ["rgb(254, 74, 73)","rgb(42, 183, 202)","rgb(254, 215, 102)","rgb(230, 230, 234)","rgb(0, 91, 150)","rgb(1, 31, 75)",
+            "rgb(133, 30, 62)","rgb(37, 30, 62)","rgb(14, 154, 167)","rgb(254, 138, 113)","rgb(42, 77, 105)","rgb(231, 239, 246)",
+            "rgb(254, 156, 143)","rgb(0, 150, 136)","rgb(3, 146, 207)","rgb(253, 245, 230)","rgb(40, 54, 85)","rgb(136, 216, 176)"];
+            console.log(colors.length)
+            uniqueCount = [];
+            historyDataArray.forEach(element => uniqueCount.push(element));
+            console.log(uniqueCount)
+            var count = {};
+            uniqueCount.forEach(function(i) { count[i] = (count[i]||0) + 1;});
+            dataSetOne = []
+            dataSetTwo = []
+            console.log(count)
+            for( let prop in count ){
+                dataSetOne.push( count[prop] );
+            }
+            for( let prop in count ){
+                dataSetTwo.push( prop );
+            }
+            numberOfColorstoPick = dataSetOne.length;
+            var colorsarrNums = [];
+            while(colorsarrNums.length < numberOfColorstoPick){
+                var r = Math.floor(Math.random() * colors.length) + 1;
+                if(colorsarrNums.indexOf(r) === -1) colorsarrNums.push(r);
+            }
+        
+            let colorsArray = []
+            colorsarrNums.forEach(element => colorsArray.push(colors[element]));
+            console.log(colorsArray)
+
+            let secondChart = document.getElementById('secondChart').getContext('2d');
+            dataForTestBreakdown = {
+            datasets: [{
+                data: dataSetOne,
+                backgroundColor: colorsArray
+            }],
+
+            // These labels appear in the legend and in the tooltips when hovering different arcs
+            labels: dataSetTwo
+        };
+
+        var secondDonutChart = new Chart(secondChart, {
+            type: 'doughnut',
+            data: dataForTestBreakdown,
+            options: {}
+        });
+
+        </script>
+
+
+        
     </body>
 
 
