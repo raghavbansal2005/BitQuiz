@@ -8,10 +8,42 @@
 
     <body>
         <%- include("./partials/navbarquiz")  %>
+        
 
-        <div style="width: 25%; margin-left: 25%; display: inline-flex;" >
-            <canvas id="myChart" width="400" height="100" ></canvas>
-            <canvas id="secondChart" width="400" height="100" ></canvas>
+
+        <h2 style="margin-left: 10%; margin-top: 1%;">Welcome Back <%= username%>!</h1>
+
+        <h2 style="margin-top: .8%; margin-left: 7%;">Setting</h2>
+        <div style="margin-top: .8%; width: 68%; margin-left: 16%;">
+            <div class="form-group">
+                <label for="exampleInputPassword1">Username</label>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="<%= username%>" disabled>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">E-mail</label>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="<%= data.email%>" disabled>
+            </div>
+            
+            <div class="form-group">
+                <label for="exampleInputPassword1">Number Of Questions In Each Quiz</label>
+                <input type="number" class="form-control" id="numberQues" name="numberOfQuestions" placeholder="<%= data.numOfQuestions%>" width="80%" >
+                <button onclick="sendData()" type="button" class="btn btn-primary" style="margin-top: 1%; margin-left: 80%;">Apply Changes</button>
+            </div>
+            </form>
+        </div>
+
+
+        <h2 style="margin-top: .8%; margin-left: 7%;">Analytics</h2>
+        <div style="width: 68%; margin-top: .8%; margin-left: 16%;" >
+        <div style="width: 50%; float: left; " >
+            <h4>Previous Test</h4>
+            <canvas id="myChart" ></canvas>
+            
+        </div>
+        <div style="width: 50%; float: right; ">
+            <h4>Test Makeup</h4>
+            <canvas id="secondChart"  ></canvas>
+        </div>
         </div>
 
 
@@ -89,6 +121,22 @@
             data: dataForTestBreakdown,
             options: {}
         });
+
+        function sendData() {
+            let data = parseInt(document.getElementById("numberQues").value, 10);
+            console.log(data);
+            $.ajax({
+                type: "POST",
+                url: `/settings`,
+                data: {data: data},
+                error: function() {
+                    console.log("Error");
+                },
+                success: function() {
+                    window.location.assign(`/settings`);
+                }
+            });
+        }
 
         </script>
 

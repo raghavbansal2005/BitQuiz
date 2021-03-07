@@ -135,6 +135,12 @@ app.get("/settings", async(req, res) => {
   }
 });
 
+app.post("/settings", async (req, res) => {
+  await User.findOneAndUpdate({username: req.user.username}, {$set: {numOfQuestions: req.body.data}});
+  console.log("Updated Successfully");
+  // console.log(req.body.data);
+});
+
 
 
 

@@ -4,7 +4,10 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>HTML to PDF Eample</title>
+    <%- include("./partials/header")  %>
+    <link rel="stylesheet" href="./../../css/login.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js" integrity="sha512-pdCVFUWsxl1A4g0uV6fyJ3nrnTGeWnZN2Tl/56j45UvZ1OMdm9CIbctuIHj+yBIRTUUyv6I9+OivXj4i0LPEYA==" crossorigin="anonymous"></script>
+    
 
   </head>
   <style>
@@ -13,6 +16,10 @@
     }
   </style>
   <body>
+
+
+    <%- include("./partials/navbarforquizforinquiz")  %>
+
     <button id="download">Download as PDF</button>
     
       <% var printingDataArr = []; %> 
@@ -42,15 +49,15 @@
       <% for (var ii=0;ii<printingDataArr.length;ii++){ %>
 
         <% if(printingDataArr[ii][1] == printingDataArr[ii][2]) {color = "green"} else {color = "red"} %>
-        <div class="<%=`full-question-${ii}`%>" style="border: 1px solid black; margin-bottom: 50px; width: 60%; margin-left: 20%">
+        <div class="<%=`full-question-${ii}`%>" style="border: 1px solid black; margin-bottom: 50px; width: 60%; margin-left: 20%;">
         <div>
           <h1><%= printingDataArr[ii][0] %></h1>
         </div>
 
         <div style="text-align: center">
-          <h2 style="border :1px solid <%=color%>; width: 25%; display: inline-block"> <%= printingDataArr[ii][1] %></h2>
+          <h2 style="box-sizing: content-box; border :1px solid <%=color%>; width: 25%; display: inline-block; height: 50px; color: black; fontsize: 25vw;"> <%= printingDataArr[ii][1] %></h2>
 
-          <h2 style="border: 1px solid green; width: 25%;  display: inline-block;"><%= printingDataArr[ii][2] %></h2>
+          <h2 style="border: 1px solid green; width: 25%;  display: inline-block; height: 50px; color: black;"><%= printingDataArr[ii][2] %></h2>
         </div>
       </div>
       <% } %>

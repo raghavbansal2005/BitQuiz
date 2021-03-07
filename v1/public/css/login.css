@@ -1,144 +1,32 @@
-body, html {
-    height: 100%;
-    font-family: 'Aleo', serif;
-}
-body { 
-    background-color:#1a1a1a;
-    height: 100%; 
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.navbar-brand{
-    font-size: 1.4rem;
-}
-.nav-link{
-    font-size: 1.1rem;
-    color: #141414;
-}
-
-.navbar-light .navbar-nav .nav-link{
-    color: #141414;
-}
-
-#quiz-dropdown{
-    margin-right: 3%;
-}
-
-.jumbotron {
-    background: transparent;
-    color: white;
-    width: 80%;
-    padding-top: 130px;
-}
-
-.cover{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#first-top-button{
-    margin-left: 5%;
-}
-#second-top-button{
-    position: absolute;
-    margin-left: 30%;
-}
-.top-row-btns{
-    margin-top: 3%;
-}
-
-.quiz-cards-top{
-    margin-top: 3%;
-}
-
-.quiz-cards{
-    margin-top: 6%;
-}
-
-.pricing-header {
-    max-width: 700px;
-  }
-  
-  .card-deck .card {
-    min-width: 220px;
-  }
-
-  .card {
-      border: 3px solid #ffc107;
-      background-color: #141414;
-  }
-.card-title {
-    color: white;
-}
-div > h1,p {
-    color: white;
-}
-
-div .card-header {
-    border-bottom: 3px solid #ffc107
-}
-
-form {
-    color:white;
-}
-
-#contactContainer {
-    margin-top: 2%;
-    width: 50%;
-}
-.form-control {
-    margin-top: .5%;
-    border: 3px solid #ffc107;
-    background: #141414;
-    color: white;
-}
-#password-form-group{
-    margin-top: 3%;
-}
-
-.alert-success {
-    border-color: #458B00!important;
-    background-color: #458B00!important;
-    color: black !important;
-}
-
-#submit-button{
-    margin-top: 2%;
-}
-/* @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 body, html{
     height: 100%;
-    background:#070707;
+    background: rgb(240, 242, 245);
     font-family: Rubik;
-    color: white;
 }
 .same-line-maker{
     display: flex;
     justify-content: center;
     align-items: center; 
-    width: 18%;
-    margin-left: 41%;
-    margin-right: 41%;
-    padding-top: 150px;
+    width: 30%;
+    margin-left: 35%;
+    margin-right: 35%;
+    padding-top: 70px;
 }
 .form-control-nine{
     flex: 14;
-    width: 28%;
+    width: 38%;
     padding-top: 4%;
     padding-bottom: 2%;
     padding-right: 8%;
     padding-left: 5%;
-    border: 5px rgb(255, 238, 0) solid;
+    border: 1px rgb(108, 103, 112) solid;
     border-radius: 25px;
     background: white;
-    color: black;
 }
 .submit-btn{
     text-align: center;
     padding-top: 10px;
-    
 }
 .home-register{
     height: 50px;
@@ -175,7 +63,7 @@ body, html{
 }
 .info-card-large{
     flex: 17;
-    width: 20%;
+    width: 30%;
     align-self: flex-middle;
 }
 .seperator{
@@ -210,27 +98,3 @@ body, html{
     margin-top: 140px;
     text-align: center;
 }
-
-@media (max-width: 800px) {
-    body, html{
-        height: 100%;
-        background: rgb(240, 242, 245);
-        font-family: Rubik;
-    }
-    .same-line-maker{
-        display: flex;
-        justify-content: center;
-        align-items: center; 
-        width: 80%;
-        margin-left: 10%;
-        margin-right: 10%;
-        padding-top: 230px;
-    }
-    .same-line-maker{
-        padding-top: 50px;
-    }
-    .logo-login-h1{
-        padding-top: 15%;
-    }
-
-  } */

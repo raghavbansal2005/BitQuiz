@@ -1,3 +1,10 @@
+
+<style>
+  #navbarSupportedContent{
+    margin-right: 85px;
+  }
+</style>
+
 <nav class="navbar navbar-expand-md navbar-light bg-warning">
     <a class="navbar-brand border border-warning rounded font-weight-bold font-italic" href="/">BITQUIZ</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,7 +21,7 @@
                 <%= username %> 
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="/settings">Profile / Analytics</a>
+                <a class="dropdown-item" href="/settings">Settings / Analytics</a>
                 <form id="logout-form" action="/logout" method="POST">
                   <a class="dropdown-item" href="#" onclick="document.getElementById('logout-form').submit();">Logout</a>
                 </form>
