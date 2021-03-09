@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== "production") {
+  require('dotenv').config();
+}
+
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
@@ -9,10 +13,11 @@ const session = require('express-session');
 const User = require("./models/user");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const MongoStore = require('connect-mongo').default;
 
 
-
-mongoose.connect('mongodb+srv://owner-raghav:password123456@cluster0.gc8q9.mongodb.net/fbla?retryWrites=true&w=majority', {
+const dbUrl = process.env.DB_URL || 'mongodb+srv://owner-raghav:password123456@cluster0.gc8q9.mongodb.net/fbla?retryWrites=true&w=majority';
+mongoose.connect(dbUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => { 
@@ -32,8 +37,21 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+const secret = process.env.SECRET || "password";
+
+const store = MongoStore.create({
+  mongoUrl: dbUrl,
+  secret,
+  touchAfter: 24 * 3600
+});
+
+store.on("error", function(e){
+  console.log("Session Store Error", e);
+})
+
 const sessionConfig = {
-  secret: "password",
+  store,
+  secret,
   resave: false,
   saveUninitialized: true,
   cookie: {
