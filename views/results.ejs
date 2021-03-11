@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>HTML to PDF Eample</title>
+    <title>Score Report</title>
     <%- include("./partials/header")  %>
     <link rel="stylesheet" href="./../../css/login.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js" integrity="sha512-pdCVFUWsxl1A4g0uV6fyJ3nrnTGeWnZN2Tl/56j45UvZ1OMdm9CIbctuIHj+yBIRTUUyv6I9+OivXj4i0LPEYA==" crossorigin="anonymous"></script>
@@ -14,13 +14,20 @@
     .answered-0{
       color: red;
     }
+    .centered-centered{
+      width: 90%;
+      margin-left: 5%;
+    }
+    .card{
+      margin-top: 3%;
+    }
   </style>
   <body>
 
 
     <%- include("./partials/navbarforquizforinquiz")  %>
 
-    <button id="download">Download as PDF</button>
+    
     
       <% var printingDataArr = []; %> 
       <% var QuestionsArr = []; %> 
@@ -36,31 +43,40 @@
 
       <% }); %>
 
-      <% for(var i=0;i<numOfQuestions;i++){  %>\
+      <% for(var i=0;i<numOfQuestions;i++){  %>
         <% currentArrayforPushing = [QuestionsArr[i],AnsweredAnswerArray[i],CorrectAnswerArray[i]]; %>
         <% printingDataArr.push(currentArrayforPushing); %>
 
       <% } %> 
 
-      <h1><%= testData.slice(-2)[0] %></h1>
+      <h1 style="margin-left: 50%;"><%= testData.slice(-2)[0] %></h1>
 
       <div id="invoice">
         <% var color;%>
+        <div class="centered-centered">
+        <div class="row"></div>
       <% for (var ii=0;ii<printingDataArr.length;ii++){ %>
+        
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><%= printingDataArr[ii][0] %></h5>
+                <p class="card-text"><%= printingDataArr[ii][1] %></p>
+                <p class="card-text"><%= printingDataArr[ii][2] %></p>
+                <% if(printingDataArr[ii][1] == printingDataArr[ii][2]){ %>
+                   <a href="#" class="btn btn-success">Correct</a>
+                <% } else {%>
+                     <a href="#" class="btn btn-danger">Incorrect</a>
+                <% } %>
+                
+              </div>
+            </div>
+          </div>
 
-        <% if(printingDataArr[ii][1] == printingDataArr[ii][2]) {color = "green"} else {color = "red"} %>
-        <div class="<%=`full-question-${ii}`%>" style="border: 1px solid black; margin-bottom: 50px; width: 60%; margin-left: 20%;">
-        <div>
-          <h1><%= printingDataArr[ii][0] %></h1>
-        </div>
-
-        <div style="text-align: center">
-          <h2 style="box-sizing: content-box; border :1px solid <%=color%>; width: 25%; display: inline-block; height: 50px; color: black; fontsize: 25vw;"> <%= printingDataArr[ii][1] %></h2>
-
-          <h2 style="border: 1px solid green; width: 25%;  display: inline-block; height: 50px; color: black;"><%= printingDataArr[ii][2] %></h2>
-        </div>
-      </div>
+      
       <% } %>
+      </div>
+    </div>
 
 
 
