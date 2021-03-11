@@ -60,9 +60,9 @@
           <div class="col-sm-12">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title"><%= printingDataArr[ii][0] %></h5>
-                <p class="card-text"><%= printingDataArr[ii][1] %></p>
-                <p class="card-text"><%= printingDataArr[ii][2] %></p>
+                <h5 class="card-title">Question: <%= printingDataArr[ii][0] %></h5>
+                <p class="card-text">Your Answer: <%= printingDataArr[ii][1] %></p>
+                <p class="card-text">Correct Answer: <%= printingDataArr[ii][2] %></p>
                 <% if(printingDataArr[ii][1] == printingDataArr[ii][2]){ %>
                    <a href="#" class="btn btn-success">Correct</a>
                 <% } else {%>
